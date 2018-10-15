@@ -87,7 +87,7 @@ server <- function(input, output, session) {
     
     duplicateAmount <- getURL(paste0("https://dev.grad2mis.com/api/26/sqlViews/oQ1yhF36aLD/data.csv"), userpwd=userpass, httpauth = 1L)
     
-    duplicateAmount <- read.table(text = duplicateAmount, sep =",", header = TRUE, stringsAsFactors = FALSE)
+    duplicateAmount <- read.csv(text = duplicateAmount, sep =",", header = TRUE, stringsAsFactors = FALSE)
     
     dup_idx <- duplicated(duplicateAmount)
     duplicateAmount <- duplicateAmount[dup_idx, ]
@@ -107,7 +107,7 @@ server <- function(input, output, session) {
     
     duplicateAmount <- getURL(paste0("https://dev.grad2mis.com/api/26/sqlViews/oQ1yhF36aLD/data.csv"), userpwd=userpass, httpauth = 1L)
     
-    duplicateAmount <- read.table(text = duplicateAmount, sep =",", header = TRUE, stringsAsFactors = FALSE)
+    duplicateAmount <- read.csv(text = duplicateAmount, sep =",", header = TRUE, stringsAsFactors = FALSE)
     
     
     n_occur <- data.frame(table(duplicateAmount$psnp_number))
