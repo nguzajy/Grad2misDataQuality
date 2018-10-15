@@ -34,9 +34,7 @@ library(xml2)
 library(rvest)
 library(tidyr)
 
-rsconnect::setAccountInfo(name='grad2mishhreports',
-                          token='9A72677A4EEA32BFC2F0769002B9372F',
-                          secret='BZGpMaBAp98bSB7cryvaGO8JHBTbsjY3Hc0+5xeI')
+source("sitesettings.R")
 
 options(knitr.table.format="html")
 options(scipen=999) #avoids printing exponential notations such 1e+10
@@ -87,7 +85,7 @@ server <- function(input, output, session) {
     
     #Gets a list of of VESA, PSNP and duplicate amount for the year
     
-    duplicateAmount <- getURL(paste0("https://dev.grad2mis.com/api/26/sqlViews/oQ1yhF36aLD/data.csv"), userpwd="jnyikona:945*Yikogu", httpauth = 1L)
+    duplicateAmount <- getURL(paste0("https://dev.grad2mis.com/api/26/sqlViews/oQ1yhF36aLD/data.csv"), userpwd=userpass, httpauth = 1L)
     
     duplicateAmount <- read.table(text = duplicateAmount, sep =",", header = TRUE, stringsAsFactors = FALSE)
     
@@ -107,7 +105,7 @@ server <- function(input, output, session) {
     
     #Gets a list of of VESA, PSNP and duplicate amount for the year
     
-    duplicateAmount <- getURL(paste0("https://dev.grad2mis.com/api/26/sqlViews/oQ1yhF36aLD/data.csv"), userpwd="jnyikona:945*Yikogu", httpauth = 1L)
+    duplicateAmount <- getURL(paste0("https://dev.grad2mis.com/api/26/sqlViews/oQ1yhF36aLD/data.csv"), userpwd=userpass, httpauth = 1L)
     
     duplicateAmount <- read.table(text = duplicateAmount, sep =",", header = TRUE, stringsAsFactors = FALSE)
     
